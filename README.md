@@ -5,7 +5,7 @@ Zbiory danych będą sukcesywnie rozbudowywane w trakcie realizacji projektu,
 a wszystkie dostępne informacje będzie można pobrać z katalogu „eksport_danych”. 
 Dane są przechowywane w środowisku Google BigQuery, a wszystkie skrypty zostały opracowane z 
 myślą o tej technologii. Jednocześnie, aby nie ograniczać dostępu do danych wyłącznie do 
-użytkowników określonej platformy, udostępniamy je w formacie CSV, co pozwala na ich import do 
+użytkowników określonej platformy, udostępniam je w formacie CSV, co pozwala na ich import do 
 dowolnych systemów zarządzania danymi.
 
 ### Struktura projektu
