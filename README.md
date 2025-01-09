@@ -19,5 +19,5 @@ ___
 ##### Żródła danych:
 ###### * API GUS [https://api-dbw.stat.gov.pl/apidocs/index.html]
 ###### * API NBP [https://api.nbp.pl/]
-###### Projekt jest tworzony przy pomocy narzędzi:  Google Cloud Platform, Pycharm Community Edition, Data Grip
+###### Projekt jest tworzony przy pomocy narzędzi:  Google Cloud Platform, Pycharm Community Edition, DataGrip
 ___
