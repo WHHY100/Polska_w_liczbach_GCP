@@ -1,8 +1,12 @@
 ### Opis projektu
 ___
-Celem projektu jest utworzenie hurtowni danych zawierającej dane statystyczne na temat Polski. Zbiory będą rozszerzane wraz z czasem trwania projektu a wszystkie informacje w nim dostępne można pobrać z katalogu "eksport_danych".
-Po stronie projektu dane odkładane są w środowisku Google Big Query i wszystkie skrypty są pisane z myślą o tej technologii. Natomiast by nie ograniczać potencjalnych odbiorców od konkretnej platformy, dane udostępniam w formacie CSV tak by można je 
-załadować do innych systemów zarządzania danymi.
+Celem projektu jest stworzenie hurtowni danych zawierającej statystyki dotyczące Polski. 
+Zbiory danych będą sukcesywnie rozbudowywane w trakcie realizacji projektu, 
+a wszystkie dostępne informacje będzie można pobrać z katalogu „eksport_danych”. 
+Dane są przechowywane w środowisku Google BigQuery, a wszystkie skrypty zostały opracowane z 
+myślą o tej technologii. Jednocześnie, aby nie ograniczać dostępu do danych wyłącznie do 
+użytkowników określonej platformy, udostępniamy je w formacie CSV, co pozwala na ich import do 
+dowolnych systemów zarządzania danymi.
 
 ### Struktura projektu
 ###### Każdy z podpunktów odpowiada kolejnemu katalogowi.
