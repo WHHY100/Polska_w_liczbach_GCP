@@ -1,71 +1,77 @@
 #----------------------------------------------------------------------
-# IMPORT WYMAGANYCH MODULÓW I BIBLIOTEK
+# FUNCKJA - BY WOWOŁAĆ KOD W PLIKU AUTOSTART
 #----------------------------------------------------------------------
 
-from datetime import datetime
-import urllib.request, json
-import connect_big_query as conn_gcp
-import time
-client = conn_gcp.connect_gcp()
+def fnc_zasilenie_dbw_roczna_inflacja():
 
-#----------------------------------------------------------------------
-# NAZWA TABELI
-#----------------------------------------------------------------------
+    #----------------------------------------------------------------------
+    # IMPORT WYMAGANYCH MODULÓW I BIBLIOTEK
+    #----------------------------------------------------------------------
 
-table_id = client.get_table( "source.tab_wskaznik_cpi_roczny")
+    from datetime import datetime
+    import urllib.request, json
+    import connect_big_query as conn_gcp
+    import time
+    client = conn_gcp.connect_gcp()
 
-#----------------------------------------------------------------------
-# UTWORZENIE TABLICY Z LATAMI DO ZACZYTANIA
-#----------------------------------------------------------------------
+    #----------------------------------------------------------------------
+    # NAZWA TABELI
+    #----------------------------------------------------------------------
 
-query_max_date = "SELECT max(wskaznik_rok) as max_dt FROM source.tab_wskaznik_cpi_roczny"
-query_max_date_result = client.query(query_max_date)
-query_max_date_result_row = next(query_max_date_result.result())
+    table_id = client.get_table( "source.tab_wskaznik_cpi_roczny")
 
-query_max_date_result_row_year = query_max_date_result_row[0] + 1
+    #----------------------------------------------------------------------
+    # UTWORZENIE TABLICY Z LATAMI DO ZACZYTANIA
+    #----------------------------------------------------------------------
 
-#----------------------------------------------------------------------
-# UTWORZENIE TABLICY Z LATAMI
-#----------------------------------------------------------------------
+    query_max_date = "SELECT max(wskaznik_rok) as max_dt FROM source.tab_wskaznik_cpi_roczny"
+    query_max_date_result = client.query(query_max_date)
+    query_max_date_result_row = next(query_max_date_result.result())
 
-rok_start = query_max_date_result_row_year
-rok_koniec = datetime.today().year
+    query_max_date_result_row_year = query_max_date_result_row[0] + 1
 
-arr_rok_dbw = []
+    #----------------------------------------------------------------------
+    # UTWORZENIE TABLICY Z LATAMI
+    #----------------------------------------------------------------------
 
-while rok_start <= rok_koniec:
-    arr_rok_dbw.append(rok_start)
-    rok_start = rok_start + 1
+    rok_start = query_max_date_result_row_year
+    rok_koniec = datetime.today().year
 
-#----------------------------------------------------------------------
-# POBRANIE DANYCH Z API
-#----------------------------------------------------------------------
+    arr_rok_dbw = []
 
-result_api = []
+    while rok_start <= rok_koniec:
+        arr_rok_dbw.append(rok_start)
+        rok_start = rok_start + 1
 
-for i in arr_rok_dbw:
+    #----------------------------------------------------------------------
+    # POBRANIE DANYCH Z API
+    #----------------------------------------------------------------------
 
-    try:
+    result_api = []
 
-        url = ("https://api-dbw.stat.gov.pl/api/1.1.0/variable/variable-data-section?id-zmienna=305&id-przekroj=" +
-               "739&id-rok=" + str(i) + "&id-okres=282&ile-na-stronie=5000&numer-strony=0&lang=pl")
+    for i in arr_rok_dbw:
 
-        with urllib.request.urlopen(url) as url:
-            data_url = json.load(url)
-            v_wskaznik_cpi = data_url['data'][0]['wartosc']
+        try:
 
-            row = [{"data_generacji" : str(datetime.now()), "wskaznik_rok" : i, "wskaznik_wartosc" : v_wskaznik_cpi}]
-            result_api.append(row)
-            time.sleep(2)
+            url = ("https://api-dbw.stat.gov.pl/api/1.1.0/variable/variable-data-section?id-zmienna=305&id-przekroj=" +
+                   "739&id-rok=" + str(i) + "&id-okres=282&ile-na-stronie=5000&numer-strony=0&lang=pl")
 
-        print("Pobrano dane za: " + str(i))
-    except:
-        print("Nie pobrano danych za okres: " + str(i) + "!")
+            with urllib.request.urlopen(url) as url:
+                data_url = json.load(url)
+                v_wskaznik_cpi = data_url['data'][0]['wartosc']
 
-#----------------------------------------------------------------------
-# ZAŁADOWANIE DANYCH DO TABELI
-#----------------------------------------------------------------------
+                row = [{"data_generacji" : str(datetime.now()), "wskaznik_rok" : i, "wskaznik_wartosc" : v_wskaznik_cpi}]
+                result_api.append(row)
+                time.sleep(2)
 
-for i in result_api:
-    client.insert_rows(table_id, i)
-    print("Załadowano dane: " + str(i[0]['wskaznik_rok']) + ", wartość CPI: " + str(str(i[0]['wskaznik_wartosc'])))
+            print("Pobrano dane za: " + str(i))
+        except:
+            print("Nie pobrano danych za okres: " + str(i) + "!")
+
+    #----------------------------------------------------------------------
+    # ZAŁADOWANIE DANYCH DO TABELI
+    #----------------------------------------------------------------------
+
+    for i in result_api:
+        client.insert_rows(table_id, i)
+        print("Załadowano dane: " + str(i[0]['wskaznik_rok']) + ", wartość CPI: " + str(str(i[0]['wskaznik_wartosc'])))

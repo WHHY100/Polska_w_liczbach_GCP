@@ -1,62 +1,68 @@
 #----------------------------------------------------------------------
-# IMPORT WYMAGANYCH MODULÓW I BIBLIOTEK
+# FUNCKJA - BY WOWOŁAĆ KOD W PLIKU AUTOSTART
 #----------------------------------------------------------------------
 
-import connect_big_query as conn_gcp
-import csv
-client = conn_gcp.connect_gcp()
+def fnc_export_danych_do_csv():
 
-#----------------------------------------------------------------------
-# ZCZYTANIE WSZYSTKICH NAZW TABEL
-#----------------------------------------------------------------------
+    #----------------------------------------------------------------------
+    # IMPORT WYMAGANYCH MODULÓW I BIBLIOTEK
+    #----------------------------------------------------------------------
 
-query_name_table = "SELECT table_name FROM source.INFORMATION_SCHEMA.TABLES"
-query_name_table_result = client.query(query_name_table)
+    import connect_big_query as conn_gcp
+    import csv
+    client = conn_gcp.connect_gcp()
 
-arr_tab_names = []
-for i in query_name_table_result:
-    arr_tab_names.append(i[0])
+    #----------------------------------------------------------------------
+    # ZCZYTANIE WSZYSTKICH NAZW TABEL
+    #----------------------------------------------------------------------
 
-#----------------------------------------------------------------------
-# ZCZYTANIE WSZYSTKICH REKORDOW Z TABELI I ZRZUT DO PLIKU
-#----------------------------------------------------------------------
+    query_name_table = "SELECT table_name FROM source.INFORMATION_SCHEMA.TABLES"
+    query_name_table_result = client.query(query_name_table)
 
-for i in arr_tab_names:
-    query_record = "SELECT * FROM source." + str(i)
-    query_record_result = client.query(query_record)
+    arr_tab_names = []
+    for i in query_name_table_result:
+        arr_tab_names.append(i[0])
 
-    query_colnames = ("SELECT column_name FROM source.INFORMATION_SCHEMA.COLUMNS WHERE table_name = '"
-                      + str(i) +
-                      "'")
-    query_colnames_result = client.query(query_colnames)
+    #----------------------------------------------------------------------
+    # ZCZYTANIE WSZYSTKICH REKORDOW Z TABELI I ZRZUT DO PLIKU
+    #----------------------------------------------------------------------
 
-    # utworzenie pustej tabeli do której zaczytamy dane
-    arr_record_table = []
+    for i in arr_tab_names:
+        query_record = "SELECT * FROM source." + str(i)
+        query_record_result = client.query(query_record)
 
-    # pobranie i zapis nagłówków
-    arr_colnames_table = []
-    for j in query_colnames_result:
-        arr_colnames_table.append(j[0])
+        query_colnames = ("SELECT column_name FROM source.INFORMATION_SCHEMA.COLUMNS WHERE table_name = '"
+                          + str(i) +
+                          "'")
+        query_colnames_result = client.query(query_colnames)
 
-    arr_record_table.append(arr_colnames_table)
+        # utworzenie pustej tabeli do której zaczytamy dane
+        arr_record_table = []
 
-    # pobranie i zapis rekordów
-    for j in query_record_result:
-        tb_len = len(j)
+        # pobranie i zapis nagłówków
+        arr_colnames_table = []
+        for j in query_colnames_result:
+            arr_colnames_table.append(j[0])
 
-        x = 0
-        arr_fields_in_record = []
-        while x < tb_len:
-            arr_fields_in_record.append(j[x])
-            x = x + 1
+        arr_record_table.append(arr_colnames_table)
 
-        arr_record_table.append(arr_fields_in_record)
+        # pobranie i zapis rekordów
+        for j in query_record_result:
+            tb_len = len(j)
 
-    # utworzenie i zapis danych do pliku
-    file_name = "../GCP_POLSKA_W_LICZBACH/eksport_danych/" + str(i) +".csv"
+            x = 0
+            arr_fields_in_record = []
+            while x < tb_len:
+                arr_fields_in_record.append(j[x])
+                x = x + 1
 
-    with open(file_name, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
-        writer.writerows(arr_record_table)
+            arr_record_table.append(arr_fields_in_record)
 
-    print("Tabela: " + str(i) + " została poprawnie eksportowana!")
+        # utworzenie i zapis danych do pliku
+        file_name = "../GCP_POLSKA_W_LICZBACH/eksport_danych/" + str(i) +".csv"
+
+        with open(file_name, mode='w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerows(arr_record_table)
+
+        print("Tabela: " + str(i) + " została poprawnie eksportowana!")
