@@ -13,7 +13,7 @@ client = conn_gcp.connect_gcp()
 # NAZWA TABELI
 #----------------------------------------------------------------------
 
-table_id = client.get_table( "source.tab_wskaznik_cpi_miesieczny")
+table_id = client.get_table("source.tab_wskaznik_cpi_miesieczny")
 
 #----------------------------------------------------------------------
 # UTWORZENIE TABLICY Z LATAMI DO ZACZYTANIA
