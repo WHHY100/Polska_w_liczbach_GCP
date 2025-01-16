@@ -14,11 +14,13 @@ ___
 * eksport_danych - w tym katalogu znajdziemy eksportowane dane w formacie CSV
 * skrypty_python - w tym katalogu znajdziemy skrypty python użyte w projekcie
 * szkielet_bazy - w tym katalogu znajdziemy skrypty tworzące tabele w bazie danych
+* html - w tym katalogu znajdziemy kod strony domowej projektu
 
 ___
 ##### Żródła danych:
 ###### * API GUS [https://api-dbw.stat.gov.pl/apidocs/index.html]
 ###### * API BDL [https://api.stat.gov.pl/Home/BdlApi]
 ###### * API NBP [https://api.nbp.pl/]
+###### * API COIN GECKO [https://api.coingecko.com/api/v3/exchange_rates]
 ###### Projekt jest tworzony przy pomocy narzędzi:  Google Cloud Platform, Pycharm Community Edition, DataGrip
 ___
