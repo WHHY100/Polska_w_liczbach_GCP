@@ -9,7 +9,7 @@
 
 from datetime import datetime
 import urllib.request, json
-import connect_big_query as conn_gcp
+import connect_big_query.connect_big_query as conn_gcp
 import time
 
 client = conn_gcp.connect_gcp()

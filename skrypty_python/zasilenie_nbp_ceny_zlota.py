@@ -10,7 +10,7 @@ def fnc_zasilenie_nbp_ceny_zlota():
 
     from datetime import datetime, timedelta, date
     import urllib.request, json
-    import connect_big_query as conn_gcp
+    import connect_big_query.connect_big_query as conn_gcp
     client = conn_gcp.connect_gcp()
 
     #----------------------------------------------------------------------

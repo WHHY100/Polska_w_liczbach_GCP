@@ -10,6 +10,7 @@ import zasilenie_nbp_kursy_walut
 import zasilenie_bdl_wynagrodzenia_polska
 import zasilenie_bdl_mieszkania_wojewodztwa
 import zasilenie_bdl_mieszkania_polska
+import zasilenie_bld_sr_cena_metra_kwadratowego
 import export_danych_do_csv
 
 #----------------------------------------------------------------------
@@ -24,6 +25,7 @@ zasilenie_nbp_kursy_walut.fnc_zasilenie_nbp_kursy_walut()
 zasilenie_bdl_wynagrodzenia_polska.fnc_zasilenie_bdl_wynagrodzenia_polska()
 zasilenie_bdl_mieszkania_wojewodztwa.fnc_zasilenie_bdl_mieszkania_wojewodztwa()
 zasilenie_bdl_mieszkania_polska.fnc_zasilenie_bdl_mieszkania_polska()
+zasilenie_bld_sr_cena_metra_kwadratowego.zasilenie_bld_sr_cena_metra_kwadratowego()
 
 #----------------------------------------------------------------------
 # WYWOŁANIE EKSPORTU

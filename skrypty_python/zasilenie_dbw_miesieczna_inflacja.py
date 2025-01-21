@@ -10,7 +10,7 @@ def fnc_zasilenie_dbw_miesieczna_inflacja():
 
     from datetime import datetime, timedelta, date
     import urllib.request, json
-    import connect_big_query as conn_gcp
+    import connect_big_query.connect_big_query as conn_gcp
     import time
     from dateutil.relativedelta import relativedelta
     client = conn_gcp.connect_gcp()

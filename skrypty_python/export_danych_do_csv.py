@@ -8,7 +8,7 @@ def fnc_export_danych_do_csv():
     # IMPORT WYMAGANYCH MODULÓW I BIBLIOTEK
     #----------------------------------------------------------------------
 
-    import connect_big_query as conn_gcp
+    import connect_big_query.connect_big_query as conn_gcp
     import csv
     client = conn_gcp.connect_gcp()
 

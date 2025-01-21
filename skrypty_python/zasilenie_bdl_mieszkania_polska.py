@@ -10,7 +10,7 @@ def fnc_zasilenie_bdl_mieszkania_polska():
 
     from datetime import datetime
     import urllib.request, json
-    import connect_big_query as conn_gcp
+    import connect_big_query.connect_big_query as conn_gcp
     import time
 
     client = conn_gcp.connect_gcp()
@@ -55,7 +55,6 @@ def fnc_zasilenie_bdl_mieszkania_polska():
         try:
             with urllib.request.urlopen(url_bdl_api) as url:
                 data_url_bdl_api = json.load(url)
-                v_dl_obiektu = len(data_url_bdl_api['results'])
 
                 mieszkania_rok = data_url_bdl_api['results'][0]['values'][0]['year']
                 mieszkania_wojewodztwo = data_url_bdl_api['results'][0]['values'][0]['val']
