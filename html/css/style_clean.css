@@ -283,3 +283,9 @@ nav {
 .gcpMenuBox {
 	padding:3%;
 }
+
+.info_user{
+	font-style: italic;
+	text-align: justify;
+	font-size: 12px;
+}

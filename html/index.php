@@ -26,3 +26,5 @@
 	echo $header;
 	echo $component;
 	echo $footer;
+	
+	require_once "statystyki_odwiedzin/statystyki_odwiedzin.php";
