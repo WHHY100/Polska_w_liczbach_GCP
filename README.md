@@ -23,5 +23,5 @@ ___
 ###### * API NBP [https://api.nbp.pl/]
 ###### * API COIN GECKO [https://api.coingecko.com/api/v3/exchange_rates]
 ###### Projekt jest tworzony przy pomocy narzędzi:  Google Cloud Platform, Pycharm Community Edition, DataGrip. 
-###### Wszelkie analizy zostały wykonane w PowerBi Dekstop.
+###### Wszelkie analizy zostały wykonane w PowerBi Desktop.
 ___
