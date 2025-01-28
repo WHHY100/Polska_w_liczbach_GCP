@@ -22,6 +22,7 @@ ___
 ###### * API BDL [https://api.stat.gov.pl/Home/BdlApi]
 ###### * API NBP [https://api.nbp.pl/]
 ###### * API COIN GECKO [https://api.coingecko.com/api/v3/exchange_rates]
+###### * API TERYT [https://api.stat.gov.pl/Home/TerytApi]
 ###### Projekt jest tworzony przy pomocy narzędzi:  Google Cloud Platform, Pycharm Community Edition, DataGrip. 
 ###### Wszelkie analizy zostały wykonane w PowerBi Desktop.
 ___
