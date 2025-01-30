@@ -89,10 +89,16 @@ nav {
     object-fit: cover;
 }
 
-.data .right-top-button{
+.data .right-top-button_txt{
     position: absolute;
     top: 5px;
     right: 5px;
+}
+
+.data .right-top-button_csv{
+    position: absolute;
+    top: 5px;
+    right: 60px;
 }
 
 .data .dropdown-menu{
@@ -293,4 +299,8 @@ nav {
 .gcpInstrukcjaPobrania{
 	margin-top:1%;
 	font-weight:bold;
+}
+
+.hurtowniaInline{
+	display:inline-block;
 }
