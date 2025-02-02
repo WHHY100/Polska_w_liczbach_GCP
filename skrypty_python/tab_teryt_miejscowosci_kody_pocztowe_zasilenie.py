@@ -90,6 +90,8 @@ arr_record = [{
       'status' : 'ZAKOŃCZONO'
 }]
 
+client.insert_rows(table_id_procedura_kontrolna, arr_record)
+
 if len(arr_miejscowosci_kody_pocztowe) > 0:
     print("Załadowano następujące kody pocztowe: ")
     for i in arr_miejscowosci_kody_pocztowe:
