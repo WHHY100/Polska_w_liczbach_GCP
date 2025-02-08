@@ -66,6 +66,12 @@ nav {
 
 /* data section */
 
+.data_main_menu{
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .data .card-title {
     font-size: 1.8rem;
     text-transform: uppercase;
@@ -83,6 +89,7 @@ nav {
     height: 200px;
     object-fit: cover;
 }
+
 
 .data .card-img-top-menu-gcp {
     height: 300px;

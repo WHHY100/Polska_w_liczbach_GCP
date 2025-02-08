@@ -10,6 +10,9 @@
 		else if ($page == "opracowania_danych"){
 			$component = file_get_contents("views/components/gcp_opracowania_danych.html");
 		}
+		else if ($page == "badania"){
+			$component = file_get_contents("views/components/gcp_badania_zbior.html");
+		}
 		else{
 			$component = "404 - podstrona nie istnieje!";
 		}
