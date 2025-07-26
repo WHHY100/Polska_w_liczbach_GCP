@@ -25,6 +25,7 @@ ___
 ###### * API TERYT [https://api.stat.gov.pl/Home/TerytApi]
 ###### * API INTAMI [https://kodpocztowy.intami.pl/]
 ###### * API RESTCOUNTRIES [https://restcountries.com/]
+###### * API OPENSKY [https://opensky-network.org/]
 ###### Projekt jest tworzony przy pomocy narzędzi:  Google Cloud Platform, Pycharm Community Edition, DataGrip. 
 ###### Wszelkie analizy zostały wykonane w PowerBi Desktop.
 ___
